@@ -100,24 +100,14 @@ savollar = [
 
 ]
 
-function students() {
-    let check = true;
-    while (check) {
-        for (let i = 0; i <= savollar.length - 1; i++) {
-            let a = Math.floor(Math.random() * 4)
-            let myAns = prompt(`${JSON.stringify(savollar[i].savol)}\nA)${savollar[i].variantlar.at(a - 0)}\nB)${savollar[i].variantlar.at(a - 1)}\nC)${savollar[i].variantlar.at(a - 2)}\nD)${savollar[i].variantlar.at(a - 3)}`)
-            if ((myAns[0].toLowerCase() == "a" && savollar[i].variantlar.at(a - 0) == savollar[i].javob) || (myAns[0].toLowerCase() == "b" && savollar[i].variantlar.at(a - 1) == savollar[i].javob) || (myAns[0].toLowerCase() == "c" && savollar[i].variantlar.at(a - 2) == savollar[i].javob) || (myAns[0].toLowerCase() == "d" && savollar[i].variantlar.at(a - 3) == savollar[i].javob)) count++;
-            else if (myAns == "exit") { break; }
-            else if (myAns[0].toLowerCase() != "a" && myAns[0].toLowerCase() != "b" && myAns[0].toLowerCase() != "c" && myAns[0].toLowerCase() != "d") { i--; alert("faqat variant kiritish kerak,qaytadan uruning") }
-        }
-        if (count == savollar.length) alert(`tabriklaymiz siz ${savollar.length} savoldan hamma savolga to'g'ri javob berdingiz`)
-        else if (count == 0) alert("siz hech qaychi savolga javob bera olmadingiz")
-        else alert(`siz ${savollar.length} ta savoldan ${count} ta savolga  to'gri javob berdingiz `)
-        let youWant = prompt("yana test ishlash uchun=> again\nchiqish uchun=> exit")
-        if (youWant == "again") { students() }
-        else if (youWant == "exit") { check = false; break; }
-    }
-}
+
+
+
+
+
+
+
+
 function changePassword() {
     name = prompt("yangi loginni kiriting");
     password = prompt("yangi parolni kiriting");
@@ -151,6 +141,8 @@ function addTest(){
 
 
 
+
+
 let name = "Sherxon"
 let password = "veneralove"
 function teachers() {
@@ -159,12 +151,11 @@ function teachers() {
     if (userName != name || userPassword != password) { alert("login yoki parol hato,qaytadan urunib ko'ring"); teachers() }
     else {
         alert("siz dasturga muaffaqiyatli kirdingiz")
-        teacherWant = prompt("kerakli bo'limni tanlang\n1=>login parolni almashtirish\n2=>test qo'shish")
+        teacherWant = prompt("kerakli bo'limni tanlang\n1=>login parolni almashtirish\n2=>test qo'shish\n3=>Testni tahrirlash")
         switch (teacherWant) {
-            case "1": {
-                changePassword();
-            } break;
-            case "2":{addTest()}
+            case "1":changePassword(); break;
+            case "2":addTest();break;
+            case "3":alert("ozroq kuting bu funksiya hali ishlamaydi");editTest();break;
         }
     }
 }
@@ -176,4 +167,7 @@ switch(whoYou){
     case "2":students();break;
     case _: alert("siz hato bo'limni tanladingiz");break;
 }
+
+
+
 
