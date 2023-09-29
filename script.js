@@ -133,7 +133,7 @@ function addTest(){
         var2 = prompt("b variant");
         var3 = prompt("c variant");
         var4 = prompt("d vairant");
-        question = prompt(`Siz tuzgan savol ${savol1}\na)${var1}\nb)${var2}\nc)${var3}\nd)${var4}\nendi to'gri javobni belgilang`);
+        question = prompt(`Siz tuzgan savol ${savol1}\na)${var1}\nb)${var2}\nc)${var3}\nd)${var4}\nTo'g'ri javobni kiriting`);
         savollar.push({
         savol: savol1,
         variantlar:[var1,var2,var3,var4],
