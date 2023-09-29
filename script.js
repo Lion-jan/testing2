@@ -4,15 +4,15 @@
 //  Dastur tuzish rejasi => har bir bo'lak alohida funksiyalar orqali avval yasab olinadi va  user uchun qulay tartibda joylashtirib chiqiladi.
 // Dastur muallifi Sherxon Muhammadiyev
 
-// version 1.0.0
-//  yangiliklar 
+
+// version 1.1.0
+// hususiyatlari 
 // prompt da varianltlar kiritamiz
 // kiritilgan javoblarni qiymati orqali tekshiramiz
 // userga natija haqda habar berish
-
-// version 1.0.0
-//  yangiliklar 
-// har safar yangilanganda savollar variantlari almashib keladi
+// har safar sayt  yangilanganda savollar variantlari almashib keladi
+// savollar ishlaib bo'linganda yana ishlash yoki chiqish haqda so'rash 
+// exit kalit so'zi orqali dasturdan chiqish
 
 
 
@@ -98,6 +98,8 @@ function students() {
             let a = Math.floor(Math.random() * 4)
             let myAns = prompt(`${JSON.stringify(savollar[i].savol)}\nA)${savollar[i].variantlar.at(a - 0)}\nB)${savollar[i].variantlar.at(a - 1)}\nC)${savollar[i].variantlar.at(a - 2)}\nD)${savollar[i].variantlar.at(a - 3)}`)
             if ((myAns[0].toLowerCase() == "a" && savollar[i].variantlar.at(a - 0) == savollar[i].javob) || (myAns[0].toLowerCase() == "b" && savollar[i].variantlar.at(a - 1) == savollar[i].javob) || (myAns[0].toLowerCase() == "c" && savollar[i].variantlar.at(a - 2) == savollar[i].javob) || (myAns[0].toLowerCase() == "d" && savollar[i].variantlar.at(a - 3) == savollar[i].javob)) count++;
+            else if (myAns=="exit"){break;}
+            else if (myAns[0].toLowerCase()!="a"&&myAns[0].toLowerCase() !="b"&&myAns[0].toLowerCase()!="c"&&myAns[0].toLowerCase()!="d") {i--;alert("faqat variant kiritish kerak,qaytadan uruning")}
         }
         if (count == savollar.length) alert(`tabriklaymiz siz ${savollar.length} savoldan hamma savolga to'g'ri javob berdingiz`)
         else if (count == 0) alert("siz hech qaychi savolga javob bera olmadingiz")
