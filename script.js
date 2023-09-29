@@ -126,8 +126,30 @@ function changePassword() {
 }
 
 function addTest(){
-alert ("Sherxon aka dasturingiz ishlayapti")
+    let checkAdd=true;
+    while (checkAdd) {
+        savol1 = prompt("savolni kiriting");
+        var1 = prompt("a variant");
+        var2 = prompt("b variant");
+        var3 = prompt("c variant");
+        var4 = prompt("d vairant");
+        question = prompt(`Siz tuzgan savol ${savol1}\na)${var1}\nb)${var2}\nc)${var3}\nd)${var4}\nendi to'gri javobni belgilang`);
+        savollar.push({
+        savol: savol1,
+        variantlar:[var1,var2,var3,var4],
+        javob:question
+        });
+        checkAdd = prompt("yana savol kiritasizmi?\n1=.ha\n0=>yo'q");
+        if (checkAdd == 0) {
+        checkAdd= false;
+        }
+    }
 }
+
+
+
+
+
 
 let name = "Sherxon"
 let password = "veneralove"
