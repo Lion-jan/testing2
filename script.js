@@ -5,7 +5,7 @@
 // Dastur muallifi Sherxon Muhammadiyev
 
 
-// version 1.1.0
+// version 2.2.3
 // hususiyatlari 
 // prompt da varianltlar kiritamiz
 // kiritilgan javoblarni qiymati orqali tekshiramiz
@@ -13,6 +13,15 @@
 // har safar sayt  yangilanganda savollar variantlari almashib keladi
 // savollar ishlaib bo'linganda yana ishlash yoki chiqish haqda so'rash 
 // exit kalit so'zi orqali dasturdan chiqish
+// user kiritgan ma'lumotlarni tahlil qiladi (siz A belgisini kiritganingizda dastur uni a deb hisoblaydi)
+// user variant belgilashda adashib umuman variantda yo'q belgini kiritganda shu savolni ishlash uchun qaytadan imkoniyat beradi
+// o'qituvchilar uchun kabinet yaratish imkoniyati
+// o'qituvchilar uchun  parolni almashtirish hususiyati mavjud
+// kiritilgan parol 8 ta belgidan kam bo'lsa qayta kiritishni so'rash
+// user kirganda o'qituvchi  yoki talaba bo'limlaridan birini tanlashi
+
+
+
 
 
 
@@ -98,17 +107,51 @@ function students() {
             let a = Math.floor(Math.random() * 4)
             let myAns = prompt(`${JSON.stringify(savollar[i].savol)}\nA)${savollar[i].variantlar.at(a - 0)}\nB)${savollar[i].variantlar.at(a - 1)}\nC)${savollar[i].variantlar.at(a - 2)}\nD)${savollar[i].variantlar.at(a - 3)}`)
             if ((myAns[0].toLowerCase() == "a" && savollar[i].variantlar.at(a - 0) == savollar[i].javob) || (myAns[0].toLowerCase() == "b" && savollar[i].variantlar.at(a - 1) == savollar[i].javob) || (myAns[0].toLowerCase() == "c" && savollar[i].variantlar.at(a - 2) == savollar[i].javob) || (myAns[0].toLowerCase() == "d" && savollar[i].variantlar.at(a - 3) == savollar[i].javob)) count++;
-            else if (myAns=="exit"){break;}
-            else if (myAns[0].toLowerCase()!="a"&&myAns[0].toLowerCase() !="b"&&myAns[0].toLowerCase()!="c"&&myAns[0].toLowerCase()!="d") {i--;alert("faqat variant kiritish kerak,qaytadan uruning")}
+            else if (myAns == "exit") { break; }
+            else if (myAns[0].toLowerCase() != "a" && myAns[0].toLowerCase() != "b" && myAns[0].toLowerCase() != "c" && myAns[0].toLowerCase() != "d") { i--; alert("faqat variant kiritish kerak,qaytadan uruning") }
         }
         if (count == savollar.length) alert(`tabriklaymiz siz ${savollar.length} savoldan hamma savolga to'g'ri javob berdingiz`)
         else if (count == 0) alert("siz hech qaychi savolga javob bera olmadingiz")
         else alert(`siz ${savollar.length} ta savoldan ${count} ta savolga  to'gri javob berdingiz `)
-       let youWant= prompt("yana test ishlash uchun=> again\nchiqish uchun=> exit")
-       if (youWant=="again"){students()}
-       else if(youWant=="exit"){check=false;break;}
+        let youWant = prompt("yana test ishlash uchun=> again\nchiqish uchun=> exit")
+        if (youWant == "again") { students() }
+        else if (youWant == "exit") { check = false; break; }
+    }
+}
+function changePassword() {
+    name = prompt("yangi loginni kiriting");
+    password = prompt("yangi parolni kiriting");
+    if (password.length<8) {alert("kamida 8 belgidan iborat parol kiriting");changePassword()}
+    else {alert("login parolingiz muaffaqiyatli almashtirildi");teachers()}
+}
+
+function addTest(){
+alert ("Sherxon aka dasturingiz ishlayapti")
+}
+
+let name = "Sherxon"
+let password = "veneralove"
+function teachers() {
+    userName = prompt("foydalanuvchi nomini kiriting")
+    userPassword = prompt("parolni kiriting")
+    if (userName != name || userPassword != password) { alert("login yoki parol hato,qaytadan urunib ko'ring"); teachers() }
+    else {
+        alert("siz dasturga muaffaqiyatli kirdingiz")
+        teacherWant = prompt("kerakli bo'limni tanlang\n1=>login parolni almashtirish\n2=>test qo'shish")
+        switch (teacherWant) {
+            case "1": {
+                changePassword();
+            } break;
+            case "2":{addTest()}
+        }
     }
 }
 
-students()
+
+let whoYou = prompt("kerakli bo'limni tanlang\n1=>O'qituvchilar uchun\n2=>Talabalar uchun");
+switch(whoYou){
+    case "1":teachers();break;
+    case "2":students();break;
+    case _: alert("siz hato bo'limni tanladingiz");break;
+}
 
